@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: vitrine-personalizados
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn core.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: DJANGO_SETTINGS_MODULE
+        value: core.settings
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: 'False'
